@@ -21,7 +21,7 @@ echo "dtoverlay=dwc2" | sudo tee -a /boot/config.txt
 echo "dtoverlay=gpio-shutdown,gpio_pin=4" | sudo tee -a /boot/config.txt
 echo "dwc2" | sudo tee -a /etc/modules
 
-sudo mkdir /mnt/rpiusb
+sudo mkdir /mnt/rpius
 sudo dd bs=1M if=/dev/zero of=/rpius.bin count=2048
 sudo mkdosfs /rpius.bin -F 32 -I
 echo "/rpius.bin /mnt/rpius vfat users,umask=000 0 0" | sudo tee -a /etc/fstab
