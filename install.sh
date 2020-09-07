@@ -13,18 +13,18 @@ sudo chmod 600 /etc/wpa_supplicant/wpa_supplicant.conf
 sudo wpa_cli -i wlan0 reconfigure
 sudo wpa_cli -i wlan0 reconnect
 
-sudo echo "interface wlan0" >> /etc/dhcpcd.conf
-sudo echo "env ifwireless=1" >> /etc/dhcpcd.conf
-sudo echo "env wpa_supplicant_driver=wext,nl80211" >> /etc/dhcpcd.conf
+echo "interface wlan0" | sudo tee -a /etc/dhcpcd.conf
+echo "env ifwireless=1" | sudo tee -a /etc/dhcpcd.conf
+echo "env wpa_supplicant_driver=wext,nl80211" | sudo tee -a /etc/dhcpcd.conf
 
-sudo echo "dtoverlay=dwc2" >> /boot/config.txt
-sudo echo "dtoverlay=gpio-shutdown,gpio_pin=4" >> /boot/config.txt
-sudo echo "dwc2" >> /etc/modules
+echo "dtoverlay=dwc2" | sudo tee -a /boot/config.txt
+echo "dtoverlay=gpio-shutdown,gpio_pin=4" | sudo tee -a /boot/config.txt
+echo "dwc2" | sudo tee -a /etc/modules
 
 sudo mkdir /mnt/rpiusb
 sudo dd bs=1M if=/dev/zero of=/rpius.bin count=2048
 sudo mkdosfs /rpius.bin -F 32 -I
-sudo echo "/rpius.bin /mnt/rpius vfat users,umask=000 0 0" >> /etc/fstab
+echo "/rpius.bin /mnt/rpius vfat users,umask=000 0 0" | sudo tee -a /etc/fstab
 sudo mount -a
 sudo ln -s /mnt/rpius /home/pi/rpius
 sudo chmod 777 /mnt
