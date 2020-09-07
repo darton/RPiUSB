@@ -3,14 +3,14 @@
 _IP=$(hostname -I) || true
 FILE="OK"
 TMPDIR="/run/user/1000"
-CMD_MOUNT="sudo modprobe g_mass_storage file=/piusb.bin stall=0 removable=1 idVendor=0x0781 idProduct=0x5572 bcdDevice=0x011a iManufacturer=\"Darton\" iProduct=\"USB Storage\" iSerialNumber=\"1234567890\"5572 bcdDevice=0x011a iManufacturer=\"Darton\""
+CMD_MOUNT="sudo modprobe g_mass_storage file=/rpius.bin stall=0 removable=1 idVendor=0x0781 idProduct=0x5572 bcdDevice=0x011a iManufacturer=\"RPiUS\" iProduct=\"USB Storage\" iSerialNumber=\"1234567890\"5572 bcdDevice=0x011a iManufacturer=\"RPiUS\""
 CMD_UNMOUNT="sudo modprobe -r g_mass_storage"
 CMD_SYNC="sudo sync"
 FTP_SERVER="ftp.example.com"
 FTP_USER="login"
 FTP_PASSWD="password"
 RMTDIR="/private"
-LOCDIR="/mnt/usb_share"
+LOCDIR="/mnt/rpius"
 
 lftp <<SCRIPT
 set ftp:initial-prot ""
