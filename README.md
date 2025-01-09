@@ -19,8 +19,7 @@ sudo curl -sS https://raw.githubusercontent.com/darton/RPiUS/master/install.sh |
 
 ### How to force synchronization of files with the FTP server.
 
-To make RPiUS download files from the FTP server create a file in the / privater folder of the FTP server called OK.
-Within 1 minute, RPiUS will delete files in the local resource / mnt / rpius and download all files from the FTP server from the / private folder.
-Then it will change
-the file name OK to DONE-ip address
+To make RPiUS download files from the FTP server create a empty file in the /privater folder of the FTP server called OK.
+Within 1 minute, RPiUSB will download all files from the FTP server from the /private folder.
+Then it will change the file name OK to DONE-ip-address
 
