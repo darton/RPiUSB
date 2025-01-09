@@ -1,9 +1,9 @@
 #!/bin/bash
 
 #FTP server credentials
-FTP_SERVER="isp.kowalczyk.it"
-FTP_USER="default1"
-FTP_PASSWD="passworddefault1"
+FTP_SERVER="ftp.example.com"
+FTP_USER="ftpuser"
+FTP_PASSWD="ftpuserpassword"
 FTP_DIR="/private"
 
 #Local direcory
