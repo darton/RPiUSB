@@ -14,7 +14,7 @@ If you're not using Etcher, you'll need to unzip .zip downloads to get the image
 
 Running the following command will download and run the script.
 ```
-sudo curl -sS https://raw.githubusercontent.com/darton/RPiUS/master/install.sh | bash
+sudo curl -sS https://raw.githubusercontent.com/darton/RPiUSB/master/install.sh | bash
 ```
 
 ### How to force synchronization of files with the FTP server.
