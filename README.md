@@ -1,4 +1,4 @@
-# How make a Pi Zero W as a USB storage flash drive syncronized with ftp account 
+# Raspberry Pi Zero W as a USB storage flash drive syncronized with ftp account 
 
 ## Installing
 
