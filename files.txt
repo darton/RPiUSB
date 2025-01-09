@@ -1,4 +1,4 @@
 cron
-rpius.sh
+rpiusb.sh
 passwd2md4.sh
 wpa_supplicant.conf
