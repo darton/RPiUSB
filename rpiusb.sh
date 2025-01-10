@@ -28,21 +28,23 @@ open ftp://$FTP_SERVER:21
 user $FTP_USER $FTP_PASSWD
 lcd $LOCAL_DIR
 cd $FTP_DIR
-find "$CMD_GET" && mirror --parallel=4 --exclude "$CMD_GET" --exclude DONE-* && mv "$CMD_GET" DONE-$_IP
+find "$CMD_GET" && mirror --parallel=4 --exclude DONE-* && mv "$CMD_GET" DONE-$_IP
 rm -f "$CMD_POWEROFF"
 exit
 SCRIPT
 
-sleep 2
-
-eval $CMD_SYNC
-sleep 1
-eval $CMD_UNMOUNT
-sleep 1
-eval $CMD_SYNC
-sleep 1
-eval $CMD_MOUNT
-sleep 1
+if [[ -f "$LOCAL_DIR/$CMD_GET" ]]; then
+    rm "$LOCAL_DIR/$CMD_GET"
+    sleep 2
+    eval $CMD_SYNC
+    sleep 1
+    eval $CMD_UNMOUNT
+    sleep 1
+    eval $CMD_SYNC
+    sleep 1
+    eval $CMD_MOUNT
+    sleep 1
+fi
 
 if [[ -f "$LOCAL_DIR/$CMD_POWEROFF" ]]; then
     rm "$LOCAL_DIR/$CMD_POWEROFF"
