@@ -32,9 +32,9 @@ sudo chmod 777 /mnt/rpiusb
 
 #sudo apt-get remove --purge libreoffice* -y
 #sudo apt-get purge wolfram-engine -y
-sudo apt-get update && sudo apt-get upgrade
-sudo apt-get autoremove -y
-sudo apt-get install lftp
+sudo apt update -y && sudo apt upgrade -y
+sudo apt autoremove -y
+sudo apt install lftp
 
 cat $installdir/cron |sudo tee /etc/cron.d/rpiusb
 rm $installdir/cron
