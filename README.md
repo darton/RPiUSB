@@ -3,16 +3,15 @@
 ### Ideal for old CNC machines and other industrial devices or those that can only retrieve data from memory connected via USB and do not support Ethernet or Internet.
 
 
-## Installing
 
 ### Installing operating system images 
 
 To writing an image to the SD card, use [Imager](https://www.raspberrypi.org/downloads/)
 
-In Imager use Shift + Ctrl + X to configure [advanced options](https://www.raspberrypi.com/documentation/computers/getting-started.html#installing-the-operating-system) like WiFi, ssh, user and password before installation. 
+In Imager configure [advanced options](https://www.raspberrypi.com/documentation/computers/getting-started.html#installing-the-operating-system) like WiFi, ssh, user and password before installation. 
 
 
-### Run installation script
+### Installing RPiUSB
 
 Running the following command will download and run the script.
 ```
