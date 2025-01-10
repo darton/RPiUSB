@@ -1,9 +1,6 @@
 #!/bin/bash
 
-if [[ $(id -u) -ne 0 ]]; then
-  echo "This script must be executed as root or using sudo"
-  exit 99
-fi
+installdir=/home/pi/scripts/RPiUSB
 
 echo "Do you want to install the RPiUSB software?"
 read -r -p "$1 [y/N] " response < /dev/tty
@@ -18,7 +15,6 @@ sudo apt update -y && sudo apt upgrade -y
 sudo apt autoremove -y
 sudo apt install lftp -y
 
-installdir=/home/pi/scripts/RPiUSB
 
 [[ -d $installdir ]] || mkdir -p $installdir
 
