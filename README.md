@@ -2,6 +2,7 @@
 
 Ideal for old CNC machines and other industrial devices or those that can only retrieve data from memory connected via USB and do not support Ethernet or Internet.
 
+![RPiUSB](https://github.com/darton/RPiUSB/blob/master/IMG_1295.jpeg)
 
 ## Installing operating system images 
 
