@@ -4,7 +4,7 @@
 #sudo apt-get purge wolfram-engine -y
 sudo apt update -y && sudo apt upgrade -y
 sudo apt autoremove -y
-sudo apt install lftp
+sudo apt install lftp -y
 
 installdir=/home/pi/scripts/RPiUSB
 
