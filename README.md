@@ -10,7 +10,7 @@ Download the image [Raspberry Pi OS](https://downloads.raspberrypi.org/raspios_a
 
 To writing an image to the SD card, use [Imager](https://www.raspberrypi.org/downloads/)
 
-In Imager use Shift + Ctrl + X to configure advanced options like WiFi, ssh, user and password before installation. 
+In Imager use Shift + Ctrl + X to configure [advanced options](https://www.raspberrypi.com/documentation/computers/getting-started.html#installing-the-operating-system) like WiFi, ssh, user and password before installation. 
 
 ### Run installation script
 
