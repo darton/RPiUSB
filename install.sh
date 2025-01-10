@@ -68,18 +68,26 @@ echo ""
 echo "-------------------------------------"
 echo "Installation successfully completed !"
 echo "-------------------------------------"
+echo "Don't forget to set the variables FTP_SERVER, FTP_USER, FTP_PASSWD in the file $installdir/rpiusb.sh."
 echo ""
+echo "Do you want to set the variables now ?"
+echo ""
+read -r -p "$1 [y/N] " response < /dev/tty
+
+if [[ $response =~ ^(yes|y|Y)$ ]]; then
+    nano $installdir/rpiusb.sh
+fi
+
 echo "Reboot is necessary for proper RPiUSB operation."
 echo "Do you want to reboot now ?"
 echo ""
-
 read -r -p "$1 [y/N] " response < /dev/tty
 
 if [[ $response =~ ^(yes|y|Y)$ ]]; then
     sudo reboot
 else
     echo ""
-    echo "Run this command manually: reboot"
+    echo "Run this command manually: sudo reboot"
     echo ""
     exit
 fi
