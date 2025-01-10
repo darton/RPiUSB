@@ -25,3 +25,4 @@ Within a minute, RPiUSB will begin mirroring the remote /private directory from 
 
 Then it will change the file name OK to DONE-ip-address.
 
+If you want to remotely turn off the Raspberry Pi, upload a two files named POWEROFF and OK to the /private directory on the FTP server.
