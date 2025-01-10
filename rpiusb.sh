@@ -28,7 +28,7 @@ open ftp://$FTP_SERVER:21
 user $FTP_USER $FTP_PASSWD
 lcd $LOCAL_DIR
 cd $FTP_DIR
-find "$CMD_GET" && mirror --parallel=4 --exclude DONE-* && mv "$CMD_GET" DONE-$_IP
+cls -1 "$CMD_GET" && mirror --parallel=4 --exclude DONE-* && mv "$CMD_GET" DONE-$_IP
 rm -f "$CMD_POWEROFF"
 exit
 SCRIPT
