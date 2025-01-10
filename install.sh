@@ -1,7 +1,5 @@
 #!/bin/bash
 
-#sudo apt-get remove --purge libreoffice* -y
-#sudo apt-get purge wolfram-engine -y
 sudo apt update -y && sudo apt upgrade -y
 sudo apt autoremove -y
 sudo apt install lftp -y
