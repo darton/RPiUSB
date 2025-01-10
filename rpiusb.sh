@@ -46,5 +46,5 @@ sleep 1
 
 if [[ -f "$LOCAL_DIR/$CMD_POWEROFF" ]]; then
     rm "$LOCAL_DIR/$CMD_POWEROFF"
-    echo sudo poweroff
+    sudo poweroff
 fi
