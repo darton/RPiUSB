@@ -1,6 +1,6 @@
 # RPiUSB is Raspberry Pi Zero W based a USB drive synchronized with an FTP Server account.
 
-Ideal for old CNC machines and other industrial devices or those that can only retrieve data from memory connected via USB and do not support Ethernet or Internet.
+Ideal for old CNC machines and other industrial devices or all those that can only retrieve data from memory connected via USB and do not support Ethernet or Internet like old TV, audio or video player.
 
 ![RPiUSB](https://github.com/darton/RPiUSB/blob/master/IMG_1295.jpeg)
 
