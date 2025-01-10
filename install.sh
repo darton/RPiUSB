@@ -65,6 +65,25 @@ cat $installdir/cron |sudo tee /etc/cron.d/rpiusb
 rm $installdir/cron
 chmod u+x $installdir/*.sh
 
-#echo 'sudo modprobe g_mass_storage file=/rpiusb.bin stall=0 removable=1 idVendor=0x0781 idProduct=0x5572 bcdDevice=0x011a iManufacturer=\"RPiUSB\" iProduct=\"USB Storage\" iSerialNumber=\"1234567890\"5572 bcdDevice=0x011a iManufacturer=\"RPiUSB\"' | sudo tee -a /etc/rc.local
 sudo raspi-config nonint do_ssh 0
 sudo raspi-config nonint do_boot_behaviour B1
+
+echo ""
+echo "-------------------------------------"
+echo "Installation successfully completed !"
+echo "-------------------------------------"
+echo ""
+echo "Reboot is necessary for proper RPiUSB operation."
+echo "Do you want to reboot now ?"
+echo ""
+
+read -r -p "$1 [y/N] " response < /dev/tty
+
+if [[ $response =~ ^(yes|y|Y)$ ]]; then
+    reboot
+else
+    echo ""
+    echo "Run this command manually: reboot"
+    echo ""
+    exit
+fi
