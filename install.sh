@@ -39,6 +39,7 @@ sudo chmod 777 /mnt/rpiusb
 
 cat $installdir/cron |sudo tee /etc/cron.d/rpiusb
 rm $installdir/cron
+chmod u+x $installdir/*.sh
 
 echo 'sudo modprobe g_mass_storage file=/rpiusb.bin stall=0 removable=1 idVendor=0x0781 idProduct=0x5572 bcdDevice=0x011a iManufacturer=\"RPiUSB\" iProduct=\"USB Storage\" iSerialNumber=\"1234567890\"5572 bcdDevice=0x011a iManufacturer=\"RPiUSB\"' | sudo tee -a /etc/rc.local
 
