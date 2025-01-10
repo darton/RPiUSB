@@ -80,7 +80,7 @@ echo ""
 read -r -p "$1 [y/N] " response < /dev/tty
 
 if [[ $response =~ ^(yes|y|Y)$ ]]; then
-    reboot
+    sudo reboot
 else
     echo ""
     echo "Run this command manually: reboot"
