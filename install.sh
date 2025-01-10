@@ -18,7 +18,7 @@ echo "env ifwireless=1" | sudo tee -a /etc/dhcpcd.conf
 echo "env wpa_supplicant_driver=wext,nl80211" | sudo tee -a /etc/dhcpcd.conf
 
 echo "dtoverlay=dwc2" | sudo tee -a /boot/config.txt
-echo "dtoverlay=gpio-shutdown,gpio_pin=4" | sudo tee -a /boot/config.txt
+echo "dtoverlay=gpio-shutdown" | sudo tee -a /boot/config.txt
 echo "dwc2" | sudo tee -a /etc/modules
 
 sudo mkdir /mnt/rpiusb
