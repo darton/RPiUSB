@@ -12,7 +12,7 @@ In Imager configure [advanced options](https://www.raspberrypi.com/documentation
 
 ## Installing RPiUSB
 
-Running the following command will download and run the script,
+Run the following command will download and run the installation script automatically,
 ```
 curl -sS https://raw.githubusercontent.com/darton/RPiUSB/master/install.sh | bash
 ```
