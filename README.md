@@ -12,10 +12,21 @@ In Imager configure [advanced options](https://www.raspberrypi.com/documentation
 
 ## Installing RPiUSB
 
-Running the following command will download and run the script.
+Running the following command will download and run the script,
 ```
 curl -sS https://raw.githubusercontent.com/darton/RPiUSB/master/install.sh | bash
 ```
+or clone repo from github and install from local drive
+
+```
+git clone https://github.com/darton/rpiusb.git
+
+cd rpiusb
+
+bash install.sh
+
+```
+
 
 ### How to force synchronization of files with the FTP server.
 
