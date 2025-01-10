@@ -1,4 +1,4 @@
-# RPiUSB is Raspberry Pi Zero W based a USB drive synchronized with an FTP account.
+# RPiUSB is Raspberry Pi Zero W based a USB drive synchronized with an FTP Server account.
 
 ### Ideal for old CNC machines and other industrial devices or those that can only retrieve data from memory connected via USB and do not support Ethernet or Internet.
 
