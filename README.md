@@ -21,5 +21,6 @@ curl -sS https://raw.githubusercontent.com/darton/RPiUSB/master/install.sh | sud
 
 To make RPiUS download files from the FTP server create a empty file in the /privater folder of the FTP server called OK.
 Within 1 minute, RPiUSB will download all files from the FTP server from the /private folder.
-Then it will change the file name OK to DONE-ip-address
+Then it will change the file name OK to DONE-ip-address.
+
 
