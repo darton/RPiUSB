@@ -1,4 +1,4 @@
-#Raspberry Pi Zero W as a USB drive (in OTG mode) synchronized with an FTP account, for example, for old CNC machines and other industrial devices or those that can only retrieve data from memory connected via USB and do not support Ethernet or Internet.
+# Raspberry Pi Zero W as a USB drive (in OTG mode) synchronized with an FTP account, for example, for old CNC machines and other industrial devices or those that can only retrieve data from memory connected via USB and do not support Ethernet or Internet.
 
 ## Installing
 
