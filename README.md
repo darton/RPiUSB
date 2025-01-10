@@ -29,6 +29,4 @@ If you want to remotely turn off the Raspberry Pi, upload two files named POWERO
 
 If you want to turn RPiUSB back on, unplug and reconnect it to the USB port of the device or attach a momentary switch 
 
-to the GPIO3 and GROUND [pins](https://pinout.xyz/pinout/pin5_gpio3/). 
-
-This switch can be used to turn the Raspberry Pi on and off.
+to the GPIO3 and GROUND [pins](https://pinout.xyz/pinout/pin5_gpio3/). This switch can be used to turn the Raspberry Pi on and off.
