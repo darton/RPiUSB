@@ -19,8 +19,9 @@ curl -sS https://raw.githubusercontent.com/darton/RPiUSB/master/install.sh | bas
 
 ### How to force synchronization of files with the FTP server.
 
-To make RPiUS download files from the FTP server create a empty file in the /privater folder of the FTP server called OK.
-Within 1 minute, RPiUSB will download all files from the FTP server from the /private folder.
-Then it will change the file name OK to DONE-ip-address.
+To make RPiUSB download files from the FTP server create a empty file in the /privater folder of the FTP server called OK.
 
+Within a minute, RPiUSB will begin mirroring the remote /private directory from the FTP server to the local disk.
+
+Then it will change the file name OK to DONE-ip-address.
 
