@@ -7,7 +7,7 @@ FTP_PASSWD="ftpuserpassword"
 FTP_DIR="/private"
 
 #Local direcory
-LOCAL_DIR="/mnt/rpius"
+LOCAL_DIR="/mnt/rpiusb"
 
 #List of commands
 CMD_GET="OK"
