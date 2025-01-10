@@ -28,7 +28,7 @@ echo "g_mass_storage" | sudo tee -a /etc/modules-load.d/modules.conf
 echo 'options g_mass_storage file=/rpiusb.bin stall=0 removable=1 idVendor=0x0781 idProduct=0x5572 bcdDevice=0x011a iManufacturer=\"RPiUSB\" iProduct=\"USB Storage\" iSerialNumber=\"1234567890\"5572 bcdDevice=0x011a iManufacturer=\"RPiUSB\"' | sudo tee -a /etc/modprobe.d/g_mass_storage.conf
 
 sudo mkdir /mnt/rpiusb
-sudo dd bs=1M if=/dev/zero of=/rpiusb.bin count=4096
+sudo dd bs=1M if=/dev/zero of=/rpiusb.bin count=4K status=progress
 sudo mkdosfs /rpiusb.bin -F 32 -I
 echo "/rpiusb.bin /mnt/rpiusb vfat users,umask=000 0 0" | sudo tee -a /etc/fstab
 sudo mount -a
