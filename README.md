@@ -1,17 +1,16 @@
-# Raspberry Pi Zero W as a USB drive (in OTG mode) synchronized with an FTP account.
+# Raspberry Pi Zero W as a USB drive synchronized with an FTP account.
 
 ### Ideal for old CNC machines and other industrial devices or those that can only retrieve data from memory connected via USB and do not support Ethernet or Internet.
 
 
-
-### Installing operating system images 
+## Installing operating system images 
 
 To writing an image to the SD card, use [Imager](https://www.raspberrypi.org/downloads/)
 
 In Imager configure [advanced options](https://www.raspberrypi.com/documentation/computers/getting-started.html#installing-the-operating-system) like WiFi, ssh, user and password before installation. 
 
 
-### Installing RPiUSB
+## Installing RPiUSB
 
 Running the following command will download and run the script.
 ```
