@@ -8,21 +8,21 @@ for file in $(curl -sS https://raw.githubusercontent.com/darton/RPiUSB/master/fi
    curl -sS https://raw.githubusercontent.com/darton/RPiUSB/master/$file > $installdir/$file
 done
 
-sudo mv $installdir/wpa_supplicant.conf /etc/wpa_supplicant/
-sudo chmod 600 /etc/wpa_supplicant/wpa_supplicant.conf
-sudo wpa_cli -i wlan0 reconfigure
-sudo wpa_cli -i wlan0 reconnect
+#sudo mv $installdir/wpa_supplicant.conf /etc/wpa_supplicant/
+#sudo chmod 600 /etc/wpa_supplicant/wpa_supplicant.conf
+#sudo wpa_cli -i wlan0 reconfigure
+#sudo wpa_cli -i wlan0 reconnect
 
-echo "interface wlan0" | sudo tee -a /etc/dhcpcd.conf
-echo "env ifwireless=1" | sudo tee -a /etc/dhcpcd.conf
-echo "env wpa_supplicant_driver=wext,nl80211" | sudo tee -a /etc/dhcpcd.conf
+#echo "interface wlan0" | sudo tee -a /etc/dhcpcd.conf
+#echo "env ifwireless=1" | sudo tee -a /etc/dhcpcd.conf
+#echo "env wpa_supplicant_driver=wext,nl80211" | sudo tee -a /etc/dhcpcd.conf
 
 echo "dtoverlay=dwc2" | sudo tee -a /boot/firmware/config.txt
 echo "dtoverlay=gpio-shutdown" | sudo tee -a /boot/firmware/config.txt
 echo "dwc2" | sudo tee -a /etc/modules
 
 sudo mkdir /mnt/rpiusb
-sudo dd bs=1M if=/dev/zero of=/rpiusb.bin count=2048
+sudo dd bs=1M if=/dev/zero of=/rpiusb.bin count=4096
 sudo mkdosfs /rpiusb.bin -F 32 -I
 echo "/rpiusb.bin /mnt/rpiusb vfat users,umask=000 0 0" | sudo tee -a /etc/fstab
 sudo mount -a
@@ -30,9 +30,9 @@ sudo ln -s /mnt/rpiusb /home/pi/rpiusb
 sudo chmod 777 /mnt
 sudo chmod 777 /mnt/rpiusb
 
-sudo apt-get remove --purge libreoffice* -y
-sudo apt-get purge wolfram-engine -y
-sudo apt-get clean
+#sudo apt-get remove --purge libreoffice* -y
+#sudo apt-get purge wolfram-engine -y
+sudo apt-get update && sudo apt-get upgrade
 sudo apt-get autoremove -y
 sudo apt-get install lftp
 
