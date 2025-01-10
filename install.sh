@@ -5,6 +5,14 @@ if [[ $(id -u) -ne 0 ]]; then
   exit 99
 fi
 
+echo "Do you want to install the RPiUSB software?"
+read -r -p "$1 [y/N] " response < /dev/tty
+if [[ $response =~ ^(yes|y|Y)$ ]]; then
+    echo "Greats ! The installation has started."
+else
+    echo "OK. Exiting"
+    exit
+fi
 
 sudo apt update -y && sudo apt upgrade -y
 sudo apt autoremove -y
