@@ -24,7 +24,6 @@ git clone https://github.com/darton/rpiusb.git
 cd rpiusb
 
 bash install.sh
-
 ```
 
 
