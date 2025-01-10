@@ -1,5 +1,11 @@
 #!/bin/bash
 
+if [[ $(id -u) -ne 0 ]]; then
+  echo "This script must be executed as root or using sudo"
+  exit 99
+fi
+
+
 sudo apt update -y && sudo apt upgrade -y
 sudo apt autoremove -y
 sudo apt install lftp -y
