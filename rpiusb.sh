@@ -44,9 +44,8 @@ if [[ -f "$LOCAL_DIR/$CMD_GET" ]]; then
     sleep 1
     eval $CMD_MOUNT
     sleep 1
-fi
-
-if [[ -f "$LOCAL_DIR/$CMD_POWEROFF" ]]; then
-    rm "$LOCAL_DIR/$CMD_POWEROFF"
-    sudo poweroff
+    if [[ -f "$LOCAL_DIR/$CMD_POWEROFF" ]]; then
+        rm "$LOCAL_DIR/$CMD_POWEROFF"
+        sudo poweroff
+    fi
 fi
