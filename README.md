@@ -8,7 +8,7 @@ Download the image [Raspberry Pi OS](https://downloads.raspberrypi.org/raspios_a
 
 To writing an image to the SD card, use [Imager](https://www.raspberrypi.org/downloads/)
 
-If you're not using Etcher, you'll need to unzip .zip downloads to get the image file (.img) to write to your SD card.
+In Imager use Shift + Ctrl + X to configure advanced options like WiFi, ssh, user and password before installation. 
 
 ### Run installation script
 
