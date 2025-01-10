@@ -1,5 +1,11 @@
 #!/bin/bash
 
+#sudo apt-get remove --purge libreoffice* -y
+#sudo apt-get purge wolfram-engine -y
+sudo apt update -y && sudo apt upgrade -y
+sudo apt autoremove -y
+sudo apt install lftp
+
 installdir=/home/pi/scripts/RPiUSB
 
 [[ -d $installdir ]] || mkdir -p $installdir
@@ -30,11 +36,6 @@ sudo ln -s /mnt/rpiusb /home/pi/rpiusb
 sudo chmod 777 /mnt
 sudo chmod 777 /mnt/rpiusb
 
-#sudo apt-get remove --purge libreoffice* -y
-#sudo apt-get purge wolfram-engine -y
-sudo apt update -y && sudo apt upgrade -y
-sudo apt autoremove -y
-sudo apt install lftp
 
 cat $installdir/cron |sudo tee /etc/cron.d/rpiusb
 rm $installdir/cron
