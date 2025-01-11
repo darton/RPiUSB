@@ -46,6 +46,12 @@ if [[ -f "$LOCAL_DIR/$CMD_GET" ]]; then
     sleep 1
     if [[ -f "$LOCAL_DIR/$CMD_POWEROFF" ]]; then
         rm "$LOCAL_DIR/$CMD_POWEROFF"
+        eval $CMD_SYNC
+        sleep 1
+        eval $CMD_UNMOUNT
+        sleep 1
+        eval $CMD_SYNC
+        sleep 1
         sudo poweroff
     fi
 fi
