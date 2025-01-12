@@ -33,8 +33,8 @@ fi
 
 echo "dtoverlay=dwc2" | sudo tee -a /boot/firmware/config.txt
 echo "dtoverlay=gpio-shutdown" | sudo tee -a /boot/firmware/config.txt
-echo "dwc2" | sudo tee -a /etc/modules
-echo "g_mass_storage" | sudo tee -a /etc/modules-load.d/modules.conf
+echo "dwc2" | sudo tee /etc/modules-load.d/rpiusb-modules.conf
+echo "g_mass_storage" | sudo tee -a /etc/modules-load.d/rpiusb-modules.conf
 echo 'options g_mass_storage \
 file=/rpiusb.bin \
 stall=0 \
