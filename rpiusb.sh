@@ -1,5 +1,7 @@
 #!/bin/bash
 
+#  Author : Dariusz Kowalczyk
+
 SCRIPT_DIR=$(dirname "$(realpath "$0")")
 CONFIG_FILE_PATH="$SCRIPT_DIR/.config"
 
