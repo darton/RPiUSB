@@ -20,17 +20,17 @@ if [[ -f "$CONFIG_FILE_PATH" ]]; then
 
     # Validation of variables
     if [[ -z "$FTP_SERVER" || -z "$FTP_USER" || -z "$FTP_PASSWD" || -z "$FTP_DIR" ]]; then
-        echo "Jedna lub więcej zmiennych nie zostały poprawnie załadowane z pliku konfiguracyjnego."
+        echo "One or more variables were not correctly loaded from the configuration file."
         exit 1
     fi
 
     # Validation of server name
     if ! validate_server_name "$FTP_SERVER"; then
-        echo "Nazwa serwera FTP $FTP_SERVER nie jest poprawnym adresem IP ani nazwą FQDN."
+        echo "The FTP server name $FTP_SERVER is not a valid IP address or FQDN."
         exit 1
     fi
 else
-    echo "Plik konfiguracyjny $CONFIG_FILE nie istnieje."
+    echo "The configuration file $CONFIG_FILE does not exist."
     exit 1
 fi
 
