@@ -81,7 +81,7 @@ echo ""
 read -r -p "$1 [y/N] " response < /dev/tty
 
 if [[ $response =~ ^(yes|y|Y)$ ]]; then
-    nano $installdir/.config
+    sh -c "nano $installdir/.config"
 fi
 
 echo "Reboot is necessary for proper RPiUSB operation."
