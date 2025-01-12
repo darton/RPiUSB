@@ -30,9 +30,12 @@ else
         cp "$script_dir/$file"  "$installdir"
     done
 fi
-
-echo "dtoverlay=dwc2" | sudo tee -a /boot/firmware/config.txt
-echo "dtoverlay=gpio-shutdown" | sudo tee -a /boot/firmware/config.txt
+if ! grep -q '^dtoverlay=dwc2$' /boot/firmware/config.txt;
+    echo "dtoverlay=dwc2" | sudo tee -a /boot/firmware/config.txt
+fi
+if ! grep -q '^dtoverlay=gpio-shutdown$' /boot/firmware/config.txt;
+    echo "dtoverlay=gpio-shutdown" | sudo tee -a /boot/firmware/config.txt
+fi
 echo "dwc2" | sudo tee /etc/modules-load.d/rpiusb-modules.conf
 echo "g_mass_storage" | sudo tee -a /etc/modules-load.d/rpiusb-modules.conf
 echo 'options g_mass_storage \
