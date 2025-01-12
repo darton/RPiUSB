@@ -26,7 +26,18 @@ cd rpiusb
 
 bash install.sh
 ```
+Edit rpiusb.config file usung nano /home/pi/scripts/RPiUSB/rpiusb.conf
 
+```
+nano /home/pi/scripts/RPiUSB/rpiusb.conf
+
+#FTP server credentials
+FTP_SERVER="ftp.example.com"
+FTP_USER="ftpuser"
+FTP_PASSWD="ftpuserpassword"
+FTP_DIR="/private"
+
+```
 
 ### How to force synchronization of files with the FTP server.
 
