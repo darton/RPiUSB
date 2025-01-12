@@ -61,6 +61,18 @@ rm -f "$CMD_POWEROFF"
 exit
 SCRIPT
 
+if [[ -f "$LOCAL_DIR/$CMD_GET" ]] && [[ -f "$LOCAL_DIR/$CMD_POWEROFF" ]]; then
+    rm "$LOCAL_DIR/$CMD_POWEROFF"
+    eval $CMD_SYNC
+    sleep 2
+    eval $CMD_UNMOUNT
+    sleep 1
+    eval $CMD_SYNC
+    sleep 1
+    sudo poweroff
+    exit
+fi
+
 if [[ -f "$LOCAL_DIR/$CMD_GET" ]]; then
     rm "$LOCAL_DIR/$CMD_GET"
     eval $CMD_SYNC
@@ -71,14 +83,4 @@ if [[ -f "$LOCAL_DIR/$CMD_GET" ]]; then
     sleep 2
     eval $CMD_MOUNT
     sleep 1
-    if [[ -f "$LOCAL_DIR/$CMD_POWEROFF" ]]; then
-        rm "$LOCAL_DIR/$CMD_POWEROFF"
-        eval $CMD_SYNC
-        sleep 1
-        eval $CMD_UNMOUNT
-        sleep 1
-        eval $CMD_SYNC
-        sleep 1
-        sudo poweroff
-    fi
 fi
