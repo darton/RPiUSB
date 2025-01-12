@@ -13,7 +13,6 @@ else
     exit
 fi
 
-
 if [[ "$0" != "bash" ]] ; then
     is_direct_execution="yes"
 fi
@@ -30,9 +29,11 @@ else
         cp "$script_dir/$file"  "$installdir"
     done
 fi
+
 if ! grep -q '^dtoverlay=dwc2$' /boot/firmware/config.txt; then
     echo "dtoverlay=dwc2" | sudo tee -a /boot/firmware/config.txt
 fi
+
 if ! grep -q '^dtoverlay=gpio-shutdown$' /boot/firmware/config.txt; then
     echo "dtoverlay=gpio-shutdown" | sudo tee -a /boot/firmware/config.txt
 fi
