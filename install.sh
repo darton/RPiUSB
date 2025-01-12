@@ -54,7 +54,7 @@ echo "Creating the file system"
 sudo mkdosfs /rpiusb.bin -F 32 -I
 echo "/rpiusb.bin $mntdir vfat users,umask=000 0 0" | sudo tee -a /etc/fstab
 sudo mount -a
-sudo ln -s "mntdir" "$installdir"
+sudo ln -s "$mntdir" "$installdir"
 sudo chmod 777 /mnt
 sudo chmod 777 "$mntdir"
 
