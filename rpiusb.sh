@@ -63,13 +63,12 @@ SCRIPT
 
 if [[ -f "$LOCAL_DIR/$CMD_GET" ]]; then
     rm "$LOCAL_DIR/$CMD_GET"
-    sleep 2
     eval $CMD_SYNC
-    sleep 1
+    sleep 2
     eval $CMD_UNMOUNT
     sleep 1
     eval $CMD_SYNC
-    sleep 1
+    sleep 2
     eval $CMD_MOUNT
     sleep 1
     if [[ -f "$LOCAL_DIR/$CMD_POWEROFF" ]]; then
