@@ -49,7 +49,7 @@ iSerialNumber="1234567890"' | sudo tee /etc/modprobe.d/g_mass_storage.conf
 
 sudo mkdir -p "$mntdir"
 echo "Starting the process of creating the file rpiusb.bin using the dd command. Please wait..."
-sudo dd bs=1M if=/dev/zero of=/rpiusb.bin count=100 status=progress
+sudo dd bs=1M if=/dev/zero of=/rpiusb.bin count=4K status=progress
 echo "Done"
 echo "Creating the file system"
 sudo mkdosfs /rpiusb.bin -F 32 -I
