@@ -75,16 +75,9 @@ echo ""
 echo "-------------------------------------"
 echo "Installation successfully completed !"
 echo "-------------------------------------"
-echo "Don't forget to set the variables FTP_SERVER, FTP_USER, FTP_PASSWD in the file $installdir/rpiusb.sh."
+echo "Don't forget to set the variables FTP_SERVER, FTP_USER, FTP_PASSWD in the config file $installdir/rpiusb.conf"
+echo "Use the command nano $installdir/rpiusb.conf"
 echo ""
-echo "Do you want to set the variables now ?"
-echo ""
-read -r -p "$1 [y/N] " response < /dev/tty
-
-if [[ $response =~ ^(yes|y|Y)$ ]]; then
-    sh -c "nano $installdir/config"
-fi
-
 echo "Reboot is necessary for proper RPiUSB operation."
 echo "Do you want to reboot now ?"
 echo ""
