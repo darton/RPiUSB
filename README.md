@@ -42,5 +42,6 @@ to the GPIO3 and GROUND [pins](https://pinout.xyz/pinout/pin5_gpio3/). This swit
 To upload files to RPiUSB directly, connect it to a computer's port with Linux, MacOS, or Windows. 
 After uploading the files, add two empty files named OK and POWEROFF. RPiUSB will automatically unmount from the system, 
 and the Raspberry Pi system will shut down shortly thereafter.
+A better method would be to unmount the RPiUSB disk from the computer's system and then press the poweroff button on the Raspberry Pi Zero W.
 
 This project has been used in production for several years in a large factory to deliver batch files to a CNC machine.
