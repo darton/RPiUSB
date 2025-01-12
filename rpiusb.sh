@@ -1,10 +1,36 @@
 #!/bin/bash
 
-#FTP server credentials
-FTP_SERVER="ftp.example.com"
-FTP_USER="ftpuser"
-FTP_PASSWD="ftpuserpassword"
-FTP_DIR="/private"
+SCRIPT_DIR=$(dirname "$(realpath "$0")")
+CONFIG_FILE_PATH="$SCRIPT_DIR/.config"
+
+if [[ -f "$CONFIG_FILE_PATH" ]]; then
+    source "$CONFIG_FILE_PATH"
+    # Function to validate IP or FQDN
+    validate_server_name() {
+        local server_name="$1"
+        if [[ $server_name =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]] ||
+           [[ $server_name =~ ^[a-zA-Z0-9][-a-zA-Z0-9]{0,62}(\.[a-zA-Z0-9][-a-zA-Z0-9]{0,62})+\.?$ ]]; then
+            return 0
+        else
+            return 1
+        fi
+    }
+
+    # Validation of variables
+    if [[ -z "$FTP_SERVER" || -z "$FTP_USER" || -z "$FTP_PASSWD" || -z "$FTP_DIR" ]]; then
+        echo "Jedna lub więcej zmiennych nie zostały poprawnie załadowane z pliku konfiguracyjnego."
+        exit 1
+    fi
+
+    # Validation of server name
+    if ! validate_server_name "$FTP_SERVER"; then
+        echo "Nazwa serwera FTP $FTP_SERVER nie jest poprawnym adresem IP ani nazwą FQDN."
+        exit 1
+    fi
+else
+    echo "Plik konfiguracyjny $CONFIG_FILE nie istnieje."
+    exit 1
+fi
 
 #Local direcory
 LOCAL_DIR="/mnt/rpiusb"
