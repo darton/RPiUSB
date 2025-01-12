@@ -26,7 +26,7 @@ cd rpiusb
 
 bash install.sh
 ```
-Edit rpiusb.conf config file /home/pi/scripts/RPiUSB/rpiusb.conf
+Edit the rpiusb.conf config file located at /home/pi/scripts/RPiUSB/rpiusb.conf
 
 ```
 nano /home/pi/scripts/RPiUSB/rpiusb.conf
