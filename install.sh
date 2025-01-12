@@ -22,7 +22,7 @@ fi
 
 if [[ "$is_direct_execution" == "no" ]]; then
     for file in $(curl -sS https://raw.githubusercontent.com/darton/RPiUSB/master/files.txt); do
-        curl -sS -O "$installdir"/"$file" https://raw.githubusercontent.com/darton/RPiUSB/master/"$file"
+        curl -sS https://raw.githubusercontent.com/darton/RPiUSB/master/"$file" > "$installdir"/"$file"
     done
 else
     script_dir=$(dirname "$(realpath "$0")")
