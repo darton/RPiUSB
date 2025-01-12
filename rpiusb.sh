@@ -3,7 +3,7 @@
 #  Author : Dariusz Kowalczyk
 
 SCRIPT_DIR=$(dirname "$(realpath "$0")")
-CONFIG_FILE_PATH="$SCRIPT_DIR/.config"
+CONFIG_FILE_PATH="$SCRIPT_DIR/rpiusb.conf"
 
 if [[ -f "$CONFIG_FILE_PATH" ]]; then
     source "$CONFIG_FILE_PATH"
