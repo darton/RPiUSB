@@ -1,2 +1,2 @@
-rpiusb.conf
 rpiusb.sh
+rpiusb.conf
