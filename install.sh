@@ -59,13 +59,14 @@ echo "Done"
 echo "Creating the file system"
 sudo mkdosfs /rpiusb.bin -F 32 -I
 echo "/rpiusb.bin $mntdir vfat users,umask=000 0 0" | sudo tee -a /etc/fstab
-sudo mount -a
-sudo ln -s "$mntdir" "$installdir"
 sudo chmod 777 /mnt
 sudo chmod 777 "$mntdir"
+sudo chown -R pi:pi "$mntdir"
+sudo mount -a
+sudo ln -s "$mntdir" "$installdir"
 
 echo "# RPiUSB cron jobs"  |sudo tee /etc/cron.d/rpiusb
-echo "* 6-22 * * 1-6 pi bash $installdir/rpiusb.sh > /dev/null 2>&1" |sudo tee -a /etc/cron.d/rpiusb
+echo "* * * * * pi bash $installdir/rpiusb.sh > /dev/null 2>&1" |sudo tee -a /etc/cron.d/rpiusb
 
 chmod u+x $installdir/*.sh
 
