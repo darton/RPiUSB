@@ -40,7 +40,16 @@ fi
 #List of commands
 CMD_GET="OK"
 CMD_POWEROFF="POWEROFF"
-CMD_MOUNT="sudo modprobe g_mass_storage file=/$DISK_IMAGE stall=0 removable=1 idVendor=0x0781 idProduct=0x5572 bcdDevice=0x011a iManufacturer=\"RPiUSB\" iProduct=\"USB Storage\" iSerialNumber=\"1234567890\"5572 bcdDevice=0x011a iManufacturer=\"RPiUSB\""
+CMD_MOUNT="sudo modprobe g_mass_storage \
+file=/$DISK_IMAGE \
+stall=0 \
+removable=1 \
+idVendor=0x0781 \
+idProduct=0x5572 \
+bcdDevice=0x011a \
+iManufacturer=\"RPiUSB\" \
+iProduct=\"USB Storage\" \
+iSerialNumber=\"1234567890\""
 CMD_UNMOUNT="sudo modprobe -r g_mass_storage"
 CMD_SYNC="sudo sync"
 
