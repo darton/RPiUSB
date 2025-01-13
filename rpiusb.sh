@@ -2,7 +2,7 @@
 
 #  Author : Dariusz Kowalczyk
 
-DISK_IMAGE=rpiusb.bin
+DISK_IMAGE=rpiusb.img
 LOCAL_DIR="/mnt/rpiusb"
 
 G_MASS_STORAGE_MOUNT_READ_ONLY=true #true or false
