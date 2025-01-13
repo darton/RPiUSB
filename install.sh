@@ -41,7 +41,7 @@ fi
 
 echo "dwc2" | sudo tee /etc/modules-load.d/rpiusb-modules.conf
 echo "g_mass_storage" | sudo tee -a /etc/modules-load.d/rpiusb-modules.conf
-echo 'options g_mass_storage \
+echo "options g_mass_storage \
 file=/$disk_image \
 stall=0 \
 removable=1 \
@@ -50,7 +50,7 @@ idProduct=0x5572 \
 bcdDevice=0x011a \
 iManufacturer="RPiUSB" \
 iProduct="USB Storage" \
-iSerialNumber="1234567890"' | sudo tee /etc/modprobe.d/g_mass_storage.conf
+iSerialNumber='1234567890'" | sudo tee /etc/modprobe.d/g_mass_storage.conf
 
 
 sudo mkdir -p "$mntdir"
