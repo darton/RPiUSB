@@ -2,7 +2,7 @@
 
 installdir=/home/pi/scripts/RPiUSB
 mntdir=/mnt/rpiusb
-disk_image=rpiusb.bin
+disk_image=rpiusb.img
 is_direct_execution="no"
 
 echo "Do you want to install the RPiUSB software?"
