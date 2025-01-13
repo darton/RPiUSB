@@ -145,7 +145,7 @@ exit
 SCRIPT
 }
 
-get_command_from_ftp 2&>1 && Log "info" "There are commands to execute." || Log "info" "Nothing to do"
+get_command_from_ftp 2&>1 && Log "info" "There are commands to execute." || Log "info" "Nothing to do."
 
 if [[ -f "$TEMP_LOCAL_DIR/$CMD_GET" ]] && [[ -f "$TEMP_LOCAL_DIR/$CMD_POWEROFF" ]]; then
     eval $CMD_SYNC
