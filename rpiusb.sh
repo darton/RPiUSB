@@ -145,7 +145,7 @@ exit
 SCRIPT
 }
 
-get_command_from_ftp 2&>1 && Log "info" "There are commands to execute." || Log "info" "Nothing to do."
+ERROR_OUTPUT+=$(get_command_from_ftp 2>&1) && Log "info" "There are commands to execute." || { Log "error" "$(echo "$ERROR_OUTPUT" | tr -d '\n')"; Log "info" "Nothing to do."; exit 1; }
 
 if [[ -f "$TEMP_LOCAL_DIR/$CMD_GET" ]] && [[ -f "$TEMP_LOCAL_DIR/$CMD_POWEROFF" ]]; then
     eval $CMD_SYNC
