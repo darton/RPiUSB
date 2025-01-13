@@ -5,10 +5,56 @@
 DISK_IMAGE=rpiusb.bin
 LOCAL_DIR="/mnt/rpiusb"
 
-SCRIPT_NAME=$(basename $0)
 SCRIPT_DIR=`dirname "$(realpath "$0")"`
+SCRIPT_NAME=$(basename $0)
 CONFIG_FILE_PATH="$SCRIPT_DIR/rpiusb.conf"
 TEMP_LOCAL_DIR=$(mktemp -d /dev/shm/$SCRIPT_NAME.XXXX || { echo "Unable to create TEMP_LOCAL_DIR"; exit 1; })
+PID_FILE_NAME="$(basename -s .sh "$0").pid"
+LOCK_FILE_PATH="$SCRIPT_DIR/$PID_FILE_NAME"
+LOG_DIR="$SCRIPT_DIR"
+LOG_FILE_NAME="$(basename -s .sh "$0").log"
+LOG_FILE_PATH="$LOG_DIR/$LOG_FILE_NAME"
+
+DEBUG=true # true or false
+
+Cleaning(){
+rm -f "$LOCK_FILE_PATH"
+rm -rf "$TEMP_LOCAL_DIR"
+exit $?
+}
+
+Log(){
+[[ -f "$LOG_FILE_PATH" ]] || touch $LOG_FILE_PATH
+local message="${@:2}"
+local flag="$1"
+local logdate=$(date +"%F %T.%3N%:z")
+MESSAGE_FORMAT="${logdate} SCRIPT_NAME:${SCRIPT_NAME}; LEVEL:${flag~}; MESSAGE:${message};"
+if [[ "$DEBUG" == "true" ]]; then
+    echo "${MESSAGE_FORMAT}" | tee -a "$LOG_FILE_PATH"
+else
+    if [[ "flag" == "error" ]]; then
+        echo "${MESSAGE_FORMAT}"
+    fi
+fi
+}
+
+MakeLockFile(){
+if [ -f $LOCK_FILE_PATH  ] && kill -0 $(cat "$LOCK_FILE_PATH") 2> /dev/null; then
+    Log "error" "Script already running"
+    exit 1
+fi
+echo $$ > $LOCK_FILE_PATH || { Log "error" "Can not create lock file"; exit 1; }
+}
+
+DestroyLockFile(){
+rm -f "$LOCK_FILE_PATH" || { Log "error" "Can not remove lock file"; exit 1; }
+}
+
+
+#Trap to erasing file when receiving signals: IMT, TERM, EXIT
+trap Cleaning INT TERM EXIT
+
+MakeLockFile
 
 if [[ -f "$CONFIG_FILE_PATH" ]]; then
     source "$CONFIG_FILE_PATH"
@@ -24,16 +70,16 @@ if [[ -f "$CONFIG_FILE_PATH" ]]; then
     }
     # Validation of variables
     if [[ -z "$FTP_SERVER" || -z "$FTP_USER" || -z "$FTP_PASSWD" || -z "$FTP_DIR" ]]; then
-        echo "One or more variables were not correctly loaded from the configuration file."
+        Log "error" "One or more variables were not correctly loaded from the configuration file."
         exit 1
     fi
     # Validation of server name
     if ! validate_server_name "$FTP_SERVER"; then
-        echo "The FTP server name $FTP_SERVER is not a valid IP address or FQDN."
+        Log "error" "The FTP server name $FTP_SERVER is not a valid IP address or FQDN."
         exit 1
     fi
 else
-    echo "The configuration file $CONFIG_FILE does not exist."
+    Log "error" "The configuration file $CONFIG_FILE does not exist."
     exit 1
 fi
 
@@ -112,3 +158,5 @@ if [[ -f "$TEMP_LOCAL_DIR/$CMD_GET" ]]; then
     eval $CMD_MOUNT
     sleep 1
 fi
+
+DestroyLockFile
