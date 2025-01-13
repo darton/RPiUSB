@@ -72,7 +72,7 @@ echo "* * * * * pi bash $installdir/rpiusb.sh > /dev/null 2>&1" |sudo tee -a /et
 chmod u+x $installdir/*.sh
 
 sudo raspi-config nonint do_ssh 0
-sudo raspi-config nonint do_boot_behaviour B1
+sudo raspi-config nonint do_boot_behaviour B2
 
 sudo apt update -y && sudo apt upgrade -y
 sudo apt autoremove -y
