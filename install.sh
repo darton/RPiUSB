@@ -3,7 +3,6 @@
 installdir=/home/pi/scripts/RPiUSB
 mntdir=/mnt/rpiusb
 disk_image=rpiusb.img
-is_direct_execution="no"
 
 echo "Do you want to install the RPiUSB software?"
 read -r -p "$1 [y/N] " response < /dev/tty
@@ -14,6 +13,7 @@ else
     exit
 fi
 
+is_direct_execution="no"
 if [[ "$0" != "bash" ]] ; then
     is_direct_execution="yes"
 fi
