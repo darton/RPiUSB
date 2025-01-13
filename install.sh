@@ -2,6 +2,7 @@
 
 installdir=/home/pi/scripts/RPiUSB
 mntdir=/mnt/rpiusb
+disk_image=rpiusb.bin
 is_direct_execution="no"
 
 echo "Do you want to install the RPiUSB software?"
@@ -41,7 +42,7 @@ fi
 echo "dwc2" | sudo tee /etc/modules-load.d/rpiusb-modules.conf
 echo "g_mass_storage" | sudo tee -a /etc/modules-load.d/rpiusb-modules.conf
 echo 'options g_mass_storage \
-file=/rpiusb.bin \
+file=/$disk_image \
 stall=0 \
 removable=1 \
 idVendor=0x0781 \
@@ -54,11 +55,11 @@ iSerialNumber="1234567890"' | sudo tee /etc/modprobe.d/g_mass_storage.conf
 
 sudo mkdir -p "$mntdir"
 echo "Starting the process of creating the file rpiusb.bin using the dd command. Please wait..."
-sudo dd bs=1M if=/dev/zero of=/rpiusb.bin count=4K status=progress
+sudo dd bs=1M if=/dev/zero of=/$disk_image count=4K status=progress
 echo "Done"
 echo "Creating the file system"
-sudo mkdosfs /rpiusb.bin -F 32 -I
-echo "/rpiusb.bin $mntdir vfat users,umask=000 0 0" | sudo tee -a /etc/fstab
+sudo mkdosfs /$disk_image -F 32 -I
+echo "/$disk_image $mntdir vfat users,umask=000 0 0" | sudo tee -a /etc/fstab
 sudo chmod 777 /mnt
 sudo chmod 777 "$mntdir"
 sudo chown -R pi:pi "$mntdir"
