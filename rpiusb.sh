@@ -111,6 +111,7 @@ CMD_SYNC="sudo sync"
 
 IP=$(hostname -I|awk '{print $1}') || true
 
+get_command_from_ftp(){
 lftp <<SCRIPT
 set ftp:initial-prot ""
 set ftp:ssl-force true
@@ -125,6 +126,7 @@ cls -1 "$CMD_POWEROFF" && !touch "$CMD_POWEROFF"
 cls -1 "$CMD_GET" && !touch "$CMD_GET"
 exit
 SCRIPT
+}
 
 ftp_to_usb(){
 lftp <<SCRIPT
@@ -143,30 +145,26 @@ exit
 SCRIPT
 }
 
+get_command_from_ftp 2&>1 && Log "info" "There are commands to execute." || Log "info" "Nothing to do"
+
 if [[ -f "$TEMP_LOCAL_DIR/$CMD_GET" ]] && [[ -f "$TEMP_LOCAL_DIR/$CMD_POWEROFF" ]]; then
     eval $CMD_SYNC
-    sleep 2
     eval $CMD_UNMOUNT
-    sleep 1
     rm "$TEMP_LOCAL_DIR/$CMD_POWEROFF"
     rm "$TEMP_LOCAL_DIR/$CMD_GET"
     eval $CMD_SYNC
-    sleep 1
+    sleep 5
     sudo poweroff
 fi
 
 if [[ -f "$TEMP_LOCAL_DIR/$CMD_GET" ]]; then
     eval $CMD_SYNC
-    sleep 2
     eval $CMD_UNMOUNT
-    sleep 1
     sudo mount -o remount,rw $LOCAL_DIR
     ftp_to_usb
     rm "$TEMP_LOCAL_DIR/$CMD_GET"
     eval $CMD_SYNC
-    sleep 2
     eval $CMD_MOUNT
-    sleep 1
 fi
 
 DestroyLockFile
