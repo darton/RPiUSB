@@ -5,6 +5,8 @@
 DISK_IMAGE=rpiusb.bin
 LOCAL_DIR="/mnt/rpiusb"
 
+G_MASS_STORAGE_MOUNT_READ_ONLY=true #true or false
+
 SCRIPT_DIR=`dirname "$(realpath "$0")"`
 SCRIPT_NAME=$(basename $0)
 CONFIG_FILE_PATH="$SCRIPT_DIR/rpiusb.conf"
@@ -51,6 +53,7 @@ rm -f "$LOCK_FILE_PATH" || { Log "error" "Can not remove lock file"; exit 1; }
 }
 
 
+
 #Trap to erasing file when receiving signals: IMT, TERM, EXIT
 trap Cleaning INT TERM EXIT
 
@@ -83,6 +86,12 @@ else
     exit 1
 fi
 
+if [[ "$G_MASS_STORAGE_MOUNT_READ_ONLY" == "true" ]]; then
+    RO=1
+else
+    RO=0
+fi
+
 #List of commands
 CMD_GET="OK"
 CMD_POWEROFF="POWEROFF"
@@ -90,6 +99,7 @@ CMD_MOUNT="sudo modprobe g_mass_storage \
 file=/$DISK_IMAGE \
 stall=0 \
 removable=1 \
+ro=$RO \
 idVendor=0x0781 \
 idProduct=0x5572 \
 bcdDevice=0x011a \
