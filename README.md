@@ -41,7 +41,7 @@ FTP_DIR="/private"
 
 ### How to force synchronization of files with the FTP server.
 
-To make RPiUSB download files from the FTP server create a empty file OK in the /privater folder of the FTP server.
+To make RPiUSB download files from the FTP server create a empty file OK in the /private folder of the FTP server.
 Within a minute, RPiUSB will begin mirroring the remote /private directory from the FTP server to the local disk.
 Then it will change the file name OK to DONE-rpi-ip-address.
 
