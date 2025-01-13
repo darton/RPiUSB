@@ -20,8 +20,8 @@ LOG_FILE_PATH="$LOG_DIR/$LOG_FILE_NAME"
 DEBUG=true # true or false
 
 Cleaning(){
-rm -f "$LOCK_FILE_PATH"
 rm -rf "$TEMP_LOCAL_DIR"
+rm -f "$LOCK_FILE_PATH"
 exit $?
 }
 
@@ -103,9 +103,9 @@ ro=$RO \
 idVendor=0x0781 \
 idProduct=0x5572 \
 bcdDevice=0x011a \
-iManufacturer=\"RPiUSB\" \
-iProduct=\"USB Storage\" \
-iSerialNumber=\"1234567890\""
+iManufacturer='RPiUSB' \
+iProduct='USB Storage' \
+iSerialNumber='1234567890'"
 CMD_UNMOUNT="sudo modprobe -r g_mass_storage"
 CMD_SYNC="sudo sync"
 
