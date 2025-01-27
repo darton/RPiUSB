@@ -173,5 +173,3 @@ if [[ -f "$TEMP_LOCAL_DIR/$CMD_GET" ]]; then
     eval $CMD_SYNC
     eval $CMD_MOUNT
 fi
-
-DestroyLockFile
