@@ -30,15 +30,18 @@ Log(){
 local message="${@:2}"
 local flag="$1"
 local logdate=$(date +"%F %T.%3N%:z")
-MESSAGE_FORMAT="${logdate} SCRIPT_NAME:${SCRIPT_NAME}; LEVEL:${flag~}; MESSAGE:${message};"
+MESSAGE_FORMAT="${logdate} ${SCRIPT_NAME} ${flag~}: ${message}"
+MESSAGE_FORMAT_SIMPLE="${message}"
 if [[ "$DEBUG" == "true" ]]; then
-    echo "${MESSAGE_FORMAT}" | tee -a "$LOG_FILE_PATH"
+    echo "${MESSAGE_FORMAT_SIMPLE}"
+    echo "${MESSAGE_FORMAT}" >> "$LOG_FILE_PATH"
 else
     if [[ "flag" == "error" ]]; then
-        echo "${MESSAGE_FORMAT}"
+        echo "${MESSAGE_FORMAT_SIMPLE}"
     fi
 fi
 }
+
 
 MakeLockFile(){
 if [ -f $LOCK_FILE_PATH  ] && kill -0 $(cat "$LOCK_FILE_PATH") 2> /dev/null; then
