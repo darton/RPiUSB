@@ -19,11 +19,6 @@ LOG_FILE_PATH="$LOG_DIR/$LOG_FILE_NAME"
 
 DEBUG=true # true or false
 
-Cleaning(){
-rm -rf "$TEMP_LOCAL_DIR"
-rm -f "$LOCK_FILE_PATH"
-exit $?
-}
 
 Log(){
 [[ -f "$LOG_FILE_PATH" ]] || touch $LOG_FILE_PATH
@@ -42,7 +37,6 @@ else
 fi
 }
 
-
 MakeLockFile(){
 if [ -f $LOCK_FILE_PATH  ] && kill -0 $(cat "$LOCK_FILE_PATH") 2> /dev/null; then
     Log "error" "Script already running"
@@ -52,9 +46,19 @@ echo $$ > $LOCK_FILE_PATH || { Log "error" "Can not create lock file"; exit 1; }
 }
 
 DestroyLockFile(){
-rm -f "$LOCK_FILE_PATH" || { Log "error" "Can not remove lock file"; exit 1; }
+    if [ -f $LOCK_FILE_PATH  ]; then
+        if [ "$(cat $LOCK_FILE_PATH)" == "$$" ]; then
+            rm -f "$LOCK_FILE_PATH" || { Log "error" "Can not remove lock file"; exit 1; }
+            Log "debug" "Lock file was deleted"
+        fi
+    fi
 }
 
+Cleaning(){
+    rm -rf "$TEMP_LOCAL_DIR"
+    DestroyLockFile
+    exit $?
+}
 
 
 #Trap to erasing file when receiving signals: IMT, TERM, EXIT
