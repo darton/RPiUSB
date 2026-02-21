@@ -29,7 +29,7 @@ bash install.sh
 Edit the rpiusb.conf config file located at ~/rpiusb/rpiusb.conf
 
 ```
-nano ~/rpiusb/rpiusb.conf
+nano ~/scripts/RPiUSB/rpiusb.conf
 
 #FTP server credentials
 FTP_SERVER="ftp.example.com"
