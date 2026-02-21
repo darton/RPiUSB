@@ -8,7 +8,7 @@ Ideal for old CNC machines and other industrial devices or all those that can on
 
 To writing an image to the SD card, use [Imager](https://www.raspberrypi.org/downloads/)
 
-In Imager configure [advanced options](https://www.raspberrypi.com/documentation/computers/getting-started.html#installing-the-operating-system) like WiFi, ssh, rpi-connect, user, password before installation. 
+In Imager configure [advanced options](https://www.raspberrypi.com/documentation/computers/getting-started.html#installing-the-operating-system) like WiFi, ssh, rpi-connect-lite, user, password before installation. 
 
 
 ## Installing RPiUSB
