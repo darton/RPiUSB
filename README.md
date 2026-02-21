@@ -26,10 +26,10 @@ cd rpiusb
 
 bash install.sh
 ```
-Edit the rpiusb.conf config file located at /home/pi/scripts/RPiUSB/rpiusb.conf
+Edit the rpiusb.conf config file located at ~/rpiusb/rpiusb.conf
 
 ```
-nano /home/pi/scripts/RPiUSB/rpiusb.conf
+nano ~/rpiusb/rpiusb.conf
 
 #FTP server credentials
 FTP_SERVER="ftp.example.com"
