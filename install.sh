@@ -1,6 +1,6 @@
 #!/bin/bash
 
-installdir=/home/pi/scripts/RPiUSB
+installdir="~/scripts/RPiUSB"
 mntdir=/mnt/rpiusb
 disk_image=rpiusb.img
 
